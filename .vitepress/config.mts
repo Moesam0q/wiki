@@ -16,7 +16,8 @@ export default defineConfig({
         text: 'Beginner\'s Guide',
         items: [
           { text: 'Prerequisites', link: '/beginners-guide/prerequisites' },
-          { text: 'Getting Started', link: '/beginners-guide/getting-started' }
+          { text: 'Getting Started', link: '/beginners-guide/getting-started' },
+          { text: 'Your First Hook', link: '/beginners-guide/your-first-hook' }
         ]
       }
     ],

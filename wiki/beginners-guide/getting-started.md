@@ -38,15 +38,41 @@ Right click `library.cpp` and `library.h` and click **Delete**. Right click the 
 Add the following code to `dllmain.cpp`:
 
 ```cpp
+#define NOMINMAX
 #include <Windows.h>
 #include <cstdlib>
 
-BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
+static DWORD WINAPI startup(LPVOID dll) {
+    // The call to `std::abort` will just crash the game to show us that the DLL was injected.
     std::abort();
+}
+
+// `DllMain` is the function that will be called by Windows when your mod is injected into the game's process.
+BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
+    switch (fdwReason) {
+    case DLL_PROCESS_ATTACH:
+        // DLL_PROCESS_ATTACH means the DLL is being initialized.
+        
+        // We create a new thread to call `startup`.
+        // This is necessary since we can't use most Windows APIs inside DllMain.
+        CreateThread(nullptr, 0, &startup, hinstDLL, 0, nullptr);
+        break;
+
+    case DLL_PROCESS_DETACH:
+        // DLL_PROCESS_DETACH means that the DLL is being ejected,
+        // or that the game is shutting down.
+
+    default:
+        break;
+    }
+
+    return TRUE;
 }
 ```
 
-`DllMain` is the function that will be called by Windows when your mod is injected into the game's process. The call to `std::abort` will just crash the game to show us that the DLL was injected.
+::: info
+More information about DllMain can be found [here](https://learn.microsoft.com/en-us/windows/win32/dlls/dllmain).
+:::
 
 Now, update your `CMakeLists.txt` to compile `dllmain.cpp` instead of `library.cpp`:
 
