@@ -1,5 +1,5 @@
 # GDK
-In 1.21.120, Mojang started building Minecraft with GDK, a [game development kit from Microsoft](https://learn.microsoft.com/en-us/gaming/gdk/) that replaces UWP.
+In 1.21.120, Mojang started building Minecraft with GDK, a [game development kit from Microsoft](https://learn.microsoft.com/en-us/gaming/gdk/) that replaces [UWP](/topics/uwp).
 
 Because Minecraft is no longer a UWP app, that means a few things:
 
