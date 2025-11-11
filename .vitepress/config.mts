@@ -36,6 +36,13 @@ export default defineConfig({
         items: [
           { text: 'GDK', link: '/topics/gdk' }
         ]
+      },
+      {
+        text: 'Rendering',
+        collapsed: true,
+        items: [
+          { text: 'Overview', link: '/rendering/overview' }
+        ]
       }
     ],
 
