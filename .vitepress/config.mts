@@ -29,6 +29,13 @@ export default defineConfig({
           { text: 'Clang', link: '/tools/clang' },
           { text: 'Using ld to embed resources', link: '/tools/ld-for-embedding-resources' }
         ]
+      },
+      {
+        text: 'Topics',
+        collapsed: true,
+        items: [
+          { text: 'GDK', link: '/topics/gdk' }
+        ]
       }
     ],
 
