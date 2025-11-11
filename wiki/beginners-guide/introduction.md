@@ -27,7 +27,7 @@ Hooks are what you use to modify the game's inner workings. Most functions in th
 
 Hooking is usually provided by a hooking library. The recommended choices are MinHook and SafetyHook. MinHook is simpler and more beginner friendly, while SafetyHook has more features and a more advanced API.
 
-In this guide, you will be using MinHook.
+In this guide, we will be using MinHook.
 
 ## What's a Signature?
 

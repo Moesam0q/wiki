@@ -1,14 +1,18 @@
 # Your First Hook
 
 ::: info
-You can find the reference code for this section [here](https://github.com/bedrock-native-modding/beginners-guide-example/tree/sections/your-first-hook)
+You can find the reference code for this section [here](https://github.com/bedrock-native-modding/beginners-guide-example/tree/sections/your-first-hook).
 :::
 
-Now that you have your mod working, you probably want it to do something instead of crashing the game. To do this, you'll need to add some dependency libraries.
+Now that you have your mod working, you probably want it to do something instead of crashing the game.
 
-First, we will be using `libhat`. This is an essential library for native modding, for reasons we'll get into shortly.
+In this section, we will hook `Dimension::getTimeOfDay` to make time appear to pass faster. 
+We'll need to scan a signature to find this function, and then hook the function.
+To do this, we'll need to add some dependency libraries.
 
-In order to modify the game's behavior, you'll need to use a hooking library. There are several hooking libraries to choose from, but we will be using `MinHook`, as it has a simpler API and is more beginner-friendly.
+To scan signatures, we will use `libhat`, a memory hacking library that includes a fast signature scanner.
+
+For hooking, we will use `MinHook`.
 
 ## CPM
 [CPM](https://github.com/cpm-cmake/CPM.cmake) is a CMake library that makes it easier to add other libraries.
@@ -42,7 +46,7 @@ target_link_libraries(<project_name_here> PRIVATE
 
 ## Adding Your First Hook
 
-We will be using `libhat` to scan for one of Minecraft's functions. Specifically, we will scan for `Dimension::getTimeOfDay`. As of 1.21.120, the signature for `getTimeOfDay` is `44 8B C2 B8 F1 19 76 05 F7 EA`.
+Now, we will use `libhat` to scan for `Dimension::getTimeOfDay`. As of 1.21.120, the signature for `getTimeOfDay` is `44 8B C2 B8 F1 19 76 05 F7 EA`.
 
 ```cpp
 #include <libhat/scanner.hpp>
@@ -56,11 +60,9 @@ static DWORD WINAPI startup(LPVOID dll) {
 }
 ```
 
-Now, we will use `MinHook` to hook `getTimeOfDay` and return a different value.
+Next, write the detour function which MinHook will redirect `getTimeOfDay` to.
 
 ```cpp
-#include <MinHook.h>
-
 // MinHook will redirect Dimension::getTimeOfDay to this function, replacing its behavior with our own code.
 static float hk_getTimeOfDay(void* _this, int32_t time, float alpha) {
     static float value = 0.f;
@@ -71,9 +73,12 @@ static float hk_getTimeOfDay(void* _this, int32_t time, float alpha) {
 }
 ```
 
-To make `hk_getTimeDay` replace the behavior of `Dimension::getTimeOfDay`, we will pass it to minhook:
+Finally, we'll initialize MinHook after scanning for `getTimeOfDay`, create a hook that redirects it to `hk_getTimeOfDay`, and enable that hook.
+Then we will exit `startup`. Because of the way DLL injection works, this will cause our client to remain injected until the game is closed.
 
 ```cpp
+#include <MinHook.h>
+
 static DWORD WINAPI startup(LPVOID dll) {
     constexpr auto signature = hat::compile_signature<"44 8B C2 B8 F1 19 76 05 F7 EA">();
 
@@ -98,5 +103,5 @@ Now build your mod again, and inject the DLL. If you see the sun and moon spinni
 You can try changing the constant in `hk_getTimeOfDay` to make the time go faster or slower.
 
 ::: tip
-You can't build your mod while the DLL is injected. Since this mod has no ejecting logic, simply close the game before building your mod again.
+You can't build your mod while the DLL is injected. Close the game before building your mod again.
 :::
